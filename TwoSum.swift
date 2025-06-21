@@ -14,9 +14,15 @@ Output: [0,1]
 Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
 */
 
-class solution {
+class Solution {
     func twoSum(_ nums:[Int] ,  _ target : Int) -> [Int] {
         
+      // return  solution1( nums , target) 
+       return solution2 (nums, target) 
+
+    }
+
+    func solution1(_ nums:[Int] ,  _ target : Int) -> [Int] {
         // first of we have an array. which is not sorted.   we have to sort the array but will loose the index tracking.
         // so let's sort the array in different manner and also preserve the index  so let's make array of tuple. 
 
@@ -42,11 +48,33 @@ class solution {
             }
         }
 return []
-
     }
+
+    func solution2(_ nums : [Int], _ target : Int ) -> [Int] {
+         var sortedNums :[Int] = []
+
+         for num in nums {
+            sortedNums.append(num)
+         }
+
+         var left = 0 
+         var right = nums.count - 1 
+         while true {
+            if sortedNums[left] + sortedNums [right] == target {
+               return [nums.firstIndex(of: sortedNums[left])!, nums.lastIndex(of: sortedNums[right])!].sorted()
+            }else if sortedNums[left] + sortedNums [right] > target {
+                right -= 1 
+            }else {
+                left += 1
+            }
+         }
+         return []
+    }
+
+
 }
 
 
 
-let answerObj = solution()
+let answerObj = Solution()
 print(answerObj.twoSum([2,7,11,15], 9))
