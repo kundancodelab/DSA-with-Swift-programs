@@ -31,3 +31,7 @@ class Solution {
 
 let answerObj = Solution() 
 print(answerObj.sumArray([3, 6, 4, 8, 9]))
+
+
+
+// The time complexity of this algo is wrost case n^2   which is bad algorithm.
